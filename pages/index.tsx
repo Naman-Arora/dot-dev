@@ -11,6 +11,7 @@ import {
   Stack,
   MediaQuery,
   Space,
+  MantineProvider,
 } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import Link from 'next/link';
@@ -140,18 +141,21 @@ const Home: NextPage = () => {
                       To learn about me and view my portfolio, visit my website:
                     </Text>
                   </MediaQuery>
-                  <Button
-                    variant="outline"
-                    radius="md"
-                    size="md"
-                    component="a"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="https://namarora.me"
-                    style={{ fontSize: '1.2rem', fontFamily: 'Rubik' }}
-                  >
-                    namarora.me
-                  </Button>
+                  <MantineProvider theme={{ primaryShade: 2 }}>
+                    <Button
+                      variant="outline"
+                      radius="md"
+                      size="md"
+                      component="a"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href="https://namarora.me"
+                      color=""
+                      style={{ fontSize: '1.2rem', fontFamily: 'Rubik' }}
+                    >
+                      namarora.me
+                    </Button>
+                  </MantineProvider>
                   <MediaQuery largerThan="xs" styles={{ fontSize: '3rem' }}>
                     <Text
                       sx={{
@@ -163,6 +167,16 @@ const Home: NextPage = () => {
                       current projects:
                     </Text>
                   </MediaQuery>
+                  <Link href="/apps/weather">
+                    <Button
+                      variant="outline"
+                      radius="md"
+                      size="md"
+                      style={{ fontSize: '1.2rem', fontFamily: 'Rubik' }}
+                    >
+                      weather app
+                    </Button>
+                  </Link>
                   <Link href="/apps/mathnasium/text-generator">
                     <Button
                       variant="outline"
