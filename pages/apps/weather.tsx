@@ -23,7 +23,7 @@ import { BsExclamationLg } from 'react-icons/bs';
 import { TiHome } from 'react-icons/ti';
 import { useLocalStorage, useMediaQuery } from '@mantine/hooks';
 import WeatherType from '../../components/apps/weather/weatherType';
-import AdditionalWeatherInfo from '../../components/apps/additionalWeatherInfo';
+import AdditionalWeatherInfo from '../../components/apps/weather/additionalWeatherInfo';
 import WindSpeedIcon from '../../components/apps/weather/windSpeedIcon';
 import WindDirectionIcon from '../../components/apps/weather/windDirection';
 

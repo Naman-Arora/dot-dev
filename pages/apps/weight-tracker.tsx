@@ -8,13 +8,13 @@ import {
   NumberInput,
   Drawer,
   Modal,
-  MediaQuery,
 } from '@mantine/core';
 import { DatePicker } from '@mantine/dates';
 import { NextPage } from 'next';
 import Head from 'next/head';
 import { useState } from 'react';
 import Graph from '../../components/Graph';
+import PageTitle from '../../components/PageTitle';
 import Wrapper from '../../components/Wrapper';
 
 const Weight: NextPage = () => {
@@ -89,26 +89,7 @@ const Weight: NextPage = () => {
             Submit
           </Button>
         </Modal>
-        <Center>
-          <MediaQuery
-            largerThan="sm"
-            styles={{
-              fontSize: '4rem',
-              paddingTop: '1rem',
-            }}
-          >
-            <Text
-              sx={{
-                fontSize: '2rem',
-                fontFamily: 'Crete Round',
-                textAlign: 'center',
-                paddingTop: '2rem',
-              }}
-            >
-              weight tracker
-            </Text>
-          </MediaQuery>
-        </Center>
+        <PageTitle>weight tracker</PageTitle>
         <Center
           sx={{
             margin: '0rem',

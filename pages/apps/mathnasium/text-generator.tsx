@@ -1,10 +1,8 @@
 import {
   Affix,
   Button,
-  Center,
   Checkbox,
   Group,
-  MediaQuery,
   Modal,
   NumberInput,
   Radio,
@@ -18,12 +16,13 @@ import { useClipboard } from '@mantine/hooks';
 import { showNotification } from '@mantine/notifications';
 import { NextPage } from 'next';
 import Head from 'next/head';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import dayjs from 'dayjs';
 import { IconContext } from 'react-icons';
 import { BiNote } from 'react-icons/bi';
 import { BsCheckLg, BsExclamationLg } from 'react-icons/bs';
 import Wrapper from '../../../components/Wrapper';
+import PageTitle from '../../../components/PageTitle';
 
 dayjs().format();
 
@@ -206,7 +205,6 @@ const MathnasiumGenerator: NextPage = () => {
         color: 'red',
         icon: <BsExclamationLg />,
       });
-
     } else {
       setModalOpened(true);
       setStudentData((prevData) => [...prevData, resultString]);
@@ -224,13 +222,13 @@ const MathnasiumGenerator: NextPage = () => {
   const swt = (value: string) => {
     setWorkType(value);
     setNumPages(0);
-  }
+  };
 
   const reset = () => {
     setStudentName('');
     setTopicsWorkedOn('');
     setTopicsStruggled('');
-    
+
     setWorkType('pages');
     setNumPages(0);
 
@@ -354,26 +352,7 @@ const MathnasiumGenerator: NextPage = () => {
         >
           {data}
         </Modal>
-        <Center>
-          <MediaQuery
-            largerThan="sm"
-            styles={{
-              fontSize: '4rem',
-              paddingTop: '1rem',
-            }}
-          >
-            <Text
-              sx={{
-                fontSize: '2rem',
-                fontFamily: 'Crete Round',
-                textAlign: 'center',
-                paddingTop: '2rem',
-              }}
-            >
-              mathnasium text generator
-            </Text>
-          </MediaQuery>
-        </Center>
+        <PageTitle>mathnasium text generator</PageTitle>
         <Stack>
           <TextInput
             placeholder="e.g: Naman"
