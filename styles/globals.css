@@ -59,8 +59,7 @@ a {
     background-repeat: no-repeat;
     background-position: center;
     position: fixed;
-    /* z-index usage is up to you.. although there is no need of using it because the default stack context will work. */
-    z-index: -3; /* this is optional */
+    z-index: -3;
 
 }
 
@@ -76,8 +75,7 @@ a {
   background-repeat: no-repeat;
   background-position: center;
   position: fixed;
-  /* z-index usage is up to you.. although there is no need of using it because the default stack context will work. */
-  z-index: -2; /* this is optional */
+  z-index: -2;
 }
 
 .primary-icon-style {
