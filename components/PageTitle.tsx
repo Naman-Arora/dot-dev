@@ -16,7 +16,7 @@ const PageTitle = (props: Props) => {
       >
         <Text
           sx={{
-            fontSize: '2rem',
+            fontSize: '3rem',
             fontFamily: 'Crete Round',
             textAlign: 'center',
             paddingTop: '2rem',

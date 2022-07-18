@@ -10,6 +10,7 @@ import {
   Navbar,
   Text,
 } from '@mantine/core';
+import { useMediaQuery } from '@mantine/hooks';
 import Link from 'next/link';
 import { TiHome } from 'react-icons/ti';
 
@@ -19,6 +20,21 @@ type Props = {
 };
 
 const Wrapper = (props: Props) => {
+
+  const largerThanSM = useMediaQuery('(max-width: 500px)', true);
+
+  let pad;
+
+  if (largerThanSM) {
+    pad = {
+      padding: '0rem',
+    };
+  } else {
+    pad = {
+      padding: '2rem',
+    };
+  }
+
   return (
     <>
       {props.home ? (
@@ -204,12 +220,7 @@ const Wrapper = (props: Props) => {
           </Footer>
         }
       >
-        <Box
-          component="main"
-          sx={{
-            padding: '2rem',
-          }}
-        >
+        <Box component="main" sx={pad}>
           {props.children}
         </Box>
       </AppShell>
