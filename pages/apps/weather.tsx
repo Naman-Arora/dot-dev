@@ -32,7 +32,7 @@ type jsonResponse = {
   [key: string]: any;
 };
 
-const Main: NextPage = () => {
+const Weather: NextPage = () => {
   const [unit, setUnit] = useLocalStorage<'F' | 'C'>({
     key: 'unit-letter',
     defaultValue: 'C',
@@ -441,4 +441,4 @@ const Main: NextPage = () => {
   );
 };
 
-export default Main;
+export default Weather;
