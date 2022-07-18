@@ -4,6 +4,7 @@ import {
   Text,
   TextInput,
 } from '@mantine/core';
+import { getHotkeyHandler } from '@mantine/hooks';
 import { useState } from 'react';
 import PageTitle from '../../components/PageTitle';
 import Wrapper from '../../components/Wrapper';
@@ -47,6 +48,9 @@ const Todo = () => {
           required
           value={task}
           onChange={(event) => setTask(event.currentTarget.value)}
+          onKeyDown={getHotkeyHandler([
+            ['Enter', addTask],
+          ])}
         />
         <Space h="md" />
         <Button fullWidth color="cyan" onClick={addTask} size="lg" radius="lg">
