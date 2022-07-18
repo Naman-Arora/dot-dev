@@ -26,6 +26,7 @@ import WeatherType from '../../components/apps/weather/weatherType';
 import AdditionalWeatherInfo from '../../components/apps/weather/additionalWeatherInfo';
 import WindSpeedIcon from '../../components/apps/weather/windSpeedIcon';
 import WindDirectionIcon from '../../components/apps/weather/windDirection';
+import Link from 'next/link';
 
 type jsonResponse = {
   [key: string]: any;
@@ -85,7 +86,7 @@ const Main: NextPage = () => {
         setMaxWeatherInK(actualData.main.temp_max);
 
         setWindDeg(actualData.wind.deg);
-        setWindSpeed(actualData.wind.speed)
+        setWindSpeed(actualData.wind.speed);
         setWeatherCode(actualData.weather[0].id);
 
         setCity(actualData.name);
@@ -125,9 +126,9 @@ const Main: NextPage = () => {
     return Math.round(temp - 273.15);
   };
 
-  const toMPH = (speed: number) =>{
+  const toMPH = (speed: number) => {
     return Math.round(speed * 2.2369);
-  }
+  };
 
   if (unit == 'F') {
     minWeather = toF(minWeatherInK);
@@ -204,15 +205,11 @@ const Main: NextPage = () => {
               </Button>
             </Affix>
             <Affix position={{ top: 10, left: 10 }}>
-              <Button
-                color="dark"
-                radius="md"
-                compact
-                size="xl"
-                onClick={() => setLocationModal(true)}
-              >
-                <TiHome />
-              </Button>
+              <Link href="/">
+                <Button color="dark" radius="md" compact size="xl">
+                  <TiHome />
+                </Button>
+              </Link>
             </Affix>
           </IconContext.Provider>
           <Modal
@@ -372,7 +369,6 @@ const Main: NextPage = () => {
                       >
                         Wind is blowing {direction}
                       </Text>
-                      
                     </Grid.Col>
                     <Grid.Col span={6}>
                       {''}
@@ -392,7 +388,8 @@ const Main: NextPage = () => {
                           color: 'white',
                         }}
                       >
-                        Wind Speed: {speed}{unit == 'F' ? ' mi/h' : ' m/s'}
+                        Wind Speed: {speed}
+                        {unit == 'F' ? ' mi/h' : ' m/s'}
                       </Text>
                     </Grid.Col>
                     <Grid.Col span={6}>
