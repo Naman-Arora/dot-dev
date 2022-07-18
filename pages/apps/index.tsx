@@ -11,27 +11,22 @@ const Apps = () => {
   }
 
   const completedAppNames = ['mathnasium text generator', 'weather app'];
+  const completedAppLinks = ['/mathnasium/text-generator', '/weather'];
   const completedAppDescriptions = [
     'A text message generator for Mathnasium, which takes input in the form of text in order to return a text message that should be sent to parents.',
     "A weather app which utilizes a user's zip code to provide current weather information.",
   ];
 
   const wipAppNames = ['todo list', 'weight tracker'];
+  const wipAppLinks = ['/todo', '/weight-tracker'];
   const wipAppDescriptions = [
     'A todo list app in which the user inputs tasks that need to be completed and then can strike them off when completed.',
     'A weight tracking app in which the user inputs their weight daily and the weight is subsequently graphed to show change in weight.',
   ];
 
-  const completedApps = completedAppNames.map((item, index) => {
-    let url = '/apps/';
-    if (item === 'mathnasium text generator') {
-      url += 'mathnasium/';
-      url += item.replace('mathnasium ', '');
-    } else {
-      url += item.replace(' app', '');
-    }
-    url = url.replace(' ', '-');
 
+  const completedApps = completedAppNames.map((item, index) => {
+    const url = '/apps' + completedAppLinks[index];
     return (
       <>
         <Link href={url}>
@@ -54,8 +49,7 @@ const Apps = () => {
   });
 
   const wipApps = wipAppNames.map((item, index) => {
-    let url = '/apps/';
-    url += item.replace(' ', '-');
+    const url = '/apps' + wipAppLinks[index];
     return (
       <>
         <Link href={url}>
