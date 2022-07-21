@@ -39,7 +39,7 @@ const MathnasiumGenerator: NextPage = () => {
   const [modalOpened, setModalOpened] = useState(false);
   const [allNotesOpened, setAllNotesOpened] = useState(false);
   const [homeworkCompleted, setHomeworkCompleted] = useState(false);
-  const [assesmentCompleted, setAssesmentCompleted] = useState(false);
+  const [assessmentCompleted, setAssessmentCompleted] = useState(false);
 
   const [workType, setWorkType] = useState('pages');
 
@@ -67,18 +67,18 @@ const MathnasiumGenerator: NextPage = () => {
     studentName +
     ' today. ';
 
-  if (workType == 'assesment') {
-    if (assesmentCompleted) {
+  if (workType == 'assessment') {
+    if (assessmentCompleted) {
       resultString =
         resultString +
         studentName +
-        ' worked on an assesment today and completed it. You will receive an email from us within one week that contains their results and a link to schedule a meeting with your center manager if you would like to discuss their assessment results. Have a great ' +
+        ' worked on an assessment today and completed it. You will receive an email from us within one week that contains their results and a link to schedule a meeting with your center manager if you would like to discuss their assessment results. Have a great ' +
         ending;
     } else {
       resultString =
         resultString +
         studentName +
-        ' began working on an assesment today, but has not completed it yet. ' +
+        ' began working on an assessment today, but has not completed it yet. ' +
         studentName +
         ' will continue to work on it next session. Have a great ' +
         ending;
@@ -233,7 +233,7 @@ const MathnasiumGenerator: NextPage = () => {
     setNumPages(0);
 
     setStruggle(false);
-    setAssesmentCompleted(false);
+    setAssessmentCompleted(false);
     setHomeworkCompleted(false);
     setStruggle(false);
   };
@@ -381,7 +381,7 @@ const MathnasiumGenerator: NextPage = () => {
           >
             <Radio value="pages" label="Pages" />
             <Radio value="homework" label="Homework" />
-            <Radio value="assesment" label="Assesment" />
+            <Radio value="assessment" label="Assessment" />
           </RadioGroup>
           {(workType == 'pages' || workType == 'homework') && (
             <TextInput
@@ -408,14 +408,14 @@ const MathnasiumGenerator: NextPage = () => {
               />
             </>
           )}
-          {workType == 'assesment' && (
+          {workType == 'assessment' && (
             <Checkbox
-              label="Assesment Completed?"
+              label="Assessment Completed?"
               radius="md"
               size="md"
-              checked={assesmentCompleted}
+              checked={assessmentCompleted}
               onChange={(event) =>
-                setAssesmentCompleted(event.currentTarget.checked)
+                setAssessmentCompleted(event.currentTarget.checked)
               }
             />
           )}
