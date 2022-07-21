@@ -7,7 +7,6 @@ import {
   TextInput,
   Paper,
   Group,
-  Transition,
 } from '@mantine/core';
 import { getHotkeyHandler } from '@mantine/hooks';
 import { NextPage } from 'next';
@@ -46,24 +45,51 @@ const Search: NextPage = () => {
   }
 
   const queries = [
-    ['Search the Web for:', 'grape', `https://www.google.com/search?q=`],
-    ['Google:', 'orange', `https://www.google.com/search?q=`],
-    ['Wikipedia:', 'cyan', `https://www.wikipedia.org/wiki/`],
-    ['Thesaurus:', 'teal', `https://www.thesaurus.com/browse/`],
-    ['Dictionary:', 'teal', `https://www.dictionary.com/browse/`],
-    ['Twitter', 'blue', `https://twitter.com/search?q=`],
+    {
+      name: 'The Web',
+      color: 'grape',
+      link: 'https://www.google.com/search?q=',
+    },
+    {
+      name: 'Google',
+      color: 'orange',
+      link: 'https://www.google.com/search?q=',
+    },
+    {
+      name: 'Wikipedia',
+      color: 'cyan',
+      link: 'https://www.wikipedia.org/wiki/',
+    },
+    {
+      name: 'Thesaurus',
+      color: 'teal',
+      link: 'https://www.thesaurus.com/browse/',
+    },
+    {
+      name: 'Dictionary',
+      color: 'teal',
+      link: 'https://www.dictionary.com/browse/',
+    },
+  ];
+
+  const q = [
+    ['Twitter', 'blue', 'https://twitter.com/search?q='],
     [
       'Instagram',
       'pink',
-      `https://www.instagram.com/explore/search/keyword/?q=`,
+      'https://www.instagram.com/explore/search/keyword/?q=',
     ],
     [
       'LinkedIn',
       'indigo',
-      `https://www.linkedin.com/search/results/all/?keywords=`,
+      'https://www.linkedin.com/search/results/all/?keywords=',
     ],
     // ['Stack Overflow', 'yellow', ],
   ];
+
+  const openResult = () => {
+    window.open(queries[queryType].link + `${query}`, '_blank');
+  };
 
   return (
     <>
@@ -81,7 +107,7 @@ const Search: NextPage = () => {
               variant="filled"
               color="blue"
               sx={{ marginRight: '1rem' }}
-              onClick={() => console.log('Hello!')}
+              onClick={openResult}
             >
               <TbArrowRight size={36} />
             </ActionIcon>
@@ -90,33 +116,24 @@ const Search: NextPage = () => {
           rightSectionWidth={42}
           value={value}
           onChange={(event) => setValue(event.currentTarget.value)}
-          onKeyDown={getHotkeyHandler([
-            ['Enter', () => console.log('Enter Pressed!')],
-          ])}
+          onKeyDown={getHotkeyHandler([['Enter', openResult]])}
         />
         <Space h="xl" />{' '}
         {value.length > 0 && (
           <>
             <Box sx={{ padding: '1rem' }}>
-              {/* <Transition
-                mounted={value.length > 0}
-                transition="fade"
-                duration={500}
-                timingFunction="ease"
-              >
-                {() => ( */}
               <Paper shadow="sm" radius="md" p="xl" withBorder>
                 <Group>
                   <Badge
                     size="xl"
-                    color={queries[queryType][1]}
+                    color={queries[queryType].color}
                     variant="filled"
                   >
-                    {queries[queryType][0]}
+                    Search {queries[queryType].name} for:
                   </Badge>
                   <Text<'a'>
                     component="a"
-                    href={queries[queryType][2] + `${query}`}
+                    href={queries[queryType].link + `${query}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     size="xl"
@@ -125,8 +142,7 @@ const Search: NextPage = () => {
                   </Text>
                 </Group>
               </Paper>
-              {/* )}
-              </Transition> */}
+              <iframe src={queries[queryType].link + `${query}`} frameBorder="0" />
             </Box>
           </>
         )}
