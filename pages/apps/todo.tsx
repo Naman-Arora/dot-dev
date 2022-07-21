@@ -1,8 +1,8 @@
 import { Button, Space, Text, TextInput } from '@mantine/core';
 import { getHotkeyHandler } from '@mantine/hooks';
 import { NextPage } from 'next';
-import Head from 'next/head';
 import { useState } from 'react';
+import MainHead from '../../components/MainHead';
 import PageTitle from '../../components/PageTitle';
 import Wrapper from '../../components/Wrapper';
 
@@ -35,29 +35,7 @@ const Todo: NextPage = () => {
 
   return (
     <>
-      <Head>
-        <title>todo list</title>
-        <meta name="description" content="record your tasks" />
-        <link rel="icon" href="/main-favicon/favicon.ico" />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/main-favicon/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/main-favicon/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/main-favicon/favicon-16x16.png"
-        />
-        <link rel="manifest" href="/main-favicon/site.webmanifest" />
-      </Head>
+      <MainHead title="todo list" />
       <Wrapper>
         <PageTitle>todo list</PageTitle>
         <TextInput

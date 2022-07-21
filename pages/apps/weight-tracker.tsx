@@ -11,9 +11,9 @@ import {
 } from '@mantine/core';
 import { DatePicker } from '@mantine/dates';
 import { NextPage } from 'next';
-import Head from 'next/head';
 import { useState } from 'react';
 import Graph from '../../components/Graph';
+import MainHead from '../../components/MainHead';
 import PageTitle from '../../components/PageTitle';
 import Wrapper from '../../components/Wrapper';
 
@@ -31,29 +31,7 @@ const Weight: NextPage = () => {
 
   return (
     <>
-      <Head>
-        <title>weight tracker</title>
-        <meta name="description" content="track your weight" />
-        <link rel="icon" href="/main-favicon/favicon.ico" />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/main-favicon/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/main-favicon/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/main-favicon/favicon-16x16.png"
-        />
-        <link rel="manifest" href="/main-favicon/site.webmanifest" />
-      </Head>
+      <MainHead title="weight tracker" />
       <Wrapper>
         <Modal
           centered

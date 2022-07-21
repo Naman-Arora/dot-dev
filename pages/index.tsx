@@ -1,5 +1,4 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
 import Image from 'next/image';
 import {
   Anchor,
@@ -16,6 +15,7 @@ import {
 import { useMediaQuery } from '@mantine/hooks';
 import Link from 'next/link';
 import Wrapper from '../components/Wrapper';
+import MainHead from '../components/MainHead';
 
 const Home: NextPage = () => {
   let largerThanSM = true;
@@ -25,6 +25,7 @@ const Home: NextPage = () => {
 
   return (
     <>
+      <MainHead title="naman arora" />
       <Wrapper home>
         <Box
           component="main"
@@ -32,29 +33,6 @@ const Home: NextPage = () => {
             padding: '2rem',
           }}
         >
-          <Head>
-            <title>naman arora</title>
-            <meta name="description" content="Home" />
-            <link rel="icon" href="/main-favicon/favicon.ico" />
-            <link
-              rel="apple-touch-icon"
-              sizes="180x180"
-              href="/main-favicon/apple-touch-icon.png"
-            />
-            <link
-              rel="icon"
-              type="image/png"
-              sizes="32x32"
-              href="/main-favicon/favicon-32x32.png"
-            />
-            <link
-              rel="icon"
-              type="image/png"
-              sizes="16x16"
-              href="/main-favicon/favicon-16x16.png"
-            />
-            <link rel="manifest" href="/main-favicon/site.webmanifest" />
-          </Head>
           <Box>
             <Center>
               <MediaQuery largerThan="xs" styles={{ fontSize: '4rem' }}>

@@ -1,6 +1,7 @@
 import { Anchor, Box, Center, Grid, MediaQuery, Text } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import Link from 'next/link';
+import MainHead from '../../components/MainHead';
 import PageTitle from '../../components/PageTitle';
 import Wrapper from '../../components/Wrapper';
 
@@ -23,7 +24,6 @@ const Apps = () => {
     'A todo list app in which the user inputs tasks that need to be completed and then can strike them off when completed.',
     'A weight tracking app in which the user inputs their weight daily and the weight is subsequently graphed to show change in weight.',
   ];
-
 
   const completedApps = completedAppNames.map((item, index) => {
     const url = '/apps' + completedAppLinks[index];
@@ -74,6 +74,7 @@ const Apps = () => {
 
   return (
     <>
+      <MainHead title="my apps" />
       <Wrapper>
         <PageTitle>my apps</PageTitle>
         <Grid>

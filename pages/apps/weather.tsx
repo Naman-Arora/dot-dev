@@ -15,7 +15,6 @@ import {
 } from '@mantine/core';
 import { showNotification } from '@mantine/notifications';
 import { NextPage } from 'next';
-import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { IconContext } from 'react-icons';
 import { MdSettings } from 'react-icons/md';
@@ -27,6 +26,7 @@ import AdditionalWeatherInfo from '../../components/apps/weather/additionalWeath
 import WindSpeedIcon from '../../components/apps/weather/windSpeedIcon';
 import WindDirectionIcon from '../../components/apps/weather/windDirection';
 import Link from 'next/link';
+import MainHead from '../../components/MainHead';
 
 type jsonResponse = {
   [key: string]: any;
@@ -162,29 +162,7 @@ const Weather: NextPage = () => {
 
   return (
     <>
-      <Head>
-        <title>weather</title>
-        <meta name="description" content="view the weather" />
-        <link rel="icon" href="/main-favicon/favicon.ico" />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/main-favicon/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/main-favicon/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/main-favicon/favicon-16x16.png"
-        />
-        <link rel="manifest" href="/main-favicon/site.webmanifest" />
-      </Head>
+      <MainHead title="weather" />
       {mounted && (
         <>
           <div className="weather-gradient-background">
