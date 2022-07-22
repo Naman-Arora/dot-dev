@@ -8,8 +8,9 @@ import {
   Paper,
   Group,
   Center,
+  Grid,
 } from '@mantine/core';
-import { getHotkeyHandler } from '@mantine/hooks';
+import { getHotkeyHandler, useMediaQuery } from '@mantine/hooks';
 import { NextPage } from 'next';
 import { useState } from 'react';
 import PageTitle from '../../components/PageTitle';
@@ -18,6 +19,8 @@ import { TbArrowRight, TbSearch, TbExternalLink } from 'react-icons/tb';
 import MainHead from '../../components/MainHead';
 
 const Search: NextPage = () => {
+  const largerThanSM = useMediaQuery('(min-width: 900px)', false);
+
   const [value, setValue] = useState('');
 
   let query = '';
@@ -44,8 +47,6 @@ const Search: NextPage = () => {
     query = value;
     queryType = 0;
   }
-
-  
 
   const queries = [
     {
@@ -95,74 +96,83 @@ const Search: NextPage = () => {
     if (
       queries[queryType].name == 'The Web' ||
       queries[queryType].name == 'Google'
-    ){
-      queryLink = 'https://www.google.com/search?q=' + `${query}`
+    ) {
+      queryLink = 'https://www.google.com/search?q=' + `${query}`;
     } else {
       queryLink = queries[queryType].link;
     }
-      window.open(queryLink, '_blank');
+    window.open(queryLink, '_blank');
   };
-
-  const linkIcon = (
-    <ActionIcon color="blue">
-      <TbExternalLink size={36} />
-    </ActionIcon>
-  );
 
   return (
     <>
       <MainHead title="search" />
       <Wrapper>
         <PageTitle paddingTop={0}>search</PageTitle>
-        <TextInput
-          icon={<TbSearch size={36} />}
-          radius="xl"
-          size="xl"
-          rightSection={
-            <ActionIcon
-              size={36}
-              radius="xl"
-              variant="filled"
-              color="blue"
-              sx={{ marginRight: '1rem' }}
-              onClick={openResult}
+        <Grid sx={{}}>
+          <Grid.Col span={largerThanSM ? 3 : 12}>
+            <Box
+              sx={(theme) => ({
+                backgroundColor: theme.colors[queries[queryType].color],
+                textAlign: 'center',
+                padding: theme.spacing.md,
+                borderRadius: theme.radius.lg,
+              })}
             >
-              <TbArrowRight size={36} />
-            </ActionIcon>
-          }
-          placeholder="Search"
-          rightSectionWidth={42}
-          value={value}
-          onChange={(event) => setValue(event.currentTarget.value)}
-          onKeyDown={getHotkeyHandler([['Enter', openResult]])}
-        />
+              <Text
+                color="white"
+                transform="uppercase"
+                weight={600}
+                sx={{
+                  fontFamily: 'Rubik',
+                }}
+                size="xl"
+              >
+                Search {queries[queryType].name} for:
+              </Text>
+            </Box>
+          </Grid.Col>
+
+          <Grid.Col span={largerThanSM ? 9 : 12}>
+            <Box
+              sx={(theme) => ({
+                textAlign: 'center',
+                borderRadius: theme.radius.md,
+                alignItems: 'center',
+                justifyContent: 'center',
+              })}
+            >
+              <TextInput
+                icon={<TbSearch size={36} />}
+                radius="xl"
+                size="xl"
+                rightSection={
+                  <ActionIcon
+                    size={36}
+                    radius="xl"
+                    variant="filled"
+                    color="blue"
+                    sx={{ marginRight: '1rem', padding: '0.1rem' }}
+                    onClick={openResult}
+                  >
+                    <TbExternalLink size={32} />
+                  </ActionIcon>
+                }
+                placeholder="Search"
+                rightSectionWidth={42}
+                value={value}
+                onChange={(event) => setValue(event.currentTarget.value)}
+                onKeyDown={getHotkeyHandler([['Enter', openResult]])}
+              />
+            </Box>
+          </Grid.Col>
+        </Grid>
         <Space h="xl" />
         {''}
         {value.length > 0 && (
           <>
             <Box sx={{ padding: '1rem' }}>
               <Paper shadow="sm" radius="md" p="xl" withBorder>
-                <Group>
-                  <Badge
-                    size="xl"
-                    color={queries[queryType].color}
-                    variant="filled"
-                  >
-                    Search {queries[queryType].name} for:
-                  </Badge>
-                  <Badge<'button'>
-                    component="button"
-                    color="dark"
-                    size="xl"
-                    radius="md"
-                    variant="filled"
-                    onClick={openResult}
-                    rightSection={linkIcon}
-                    sx={{ paddingRight: 0, cursor:"pointer" }}
-                  >
-                    {query}
-                  </Badge>
-                </Group>
                 <Center>
                   <Box sx={{ padding: '1rem' }}>
                     <iframe
@@ -170,7 +180,7 @@ const Search: NextPage = () => {
                       frameBorder="0"
                       width={1200}
                       height={1000}
-                      style={{borderRadius: '0.5rem'}}
+                      style={{ borderRadius: '0.5rem' }}
                     />
                   </Box>
                 </Center>
