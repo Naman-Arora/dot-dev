@@ -36,12 +36,13 @@ const Apps = () => {
                 paddingTop: '1rem',
                 fontFamily: 'Rubik',
               }}
+              key={index}
             >
               {item}
             </Text>
           </Anchor>
         </Link>
-        <Text size="lg" sx={{ fontFamily: 'Rubik' }}>
+        <Text size="lg" sx={{ fontFamily: 'Rubik' }} key={index}>
           {completedAppDescriptions[index]}
         </Text>
       </>
@@ -63,12 +64,13 @@ const Apps = () => {
                 paddingTop: '1rem',
                 fontFamily: 'Rubik',
               }}
+              key={index}
             >
               {item}
             </Text>
           </Anchor>
         </Link>{' '}
-        <Text size="lg" sx={{ fontFamily: 'Rubik' }}>
+        <Text size="lg" sx={{ fontFamily: 'Rubik' }} key={index}>
           {wipAppDescriptions[index]}
         </Text>
       </>
