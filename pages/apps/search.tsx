@@ -45,6 +45,8 @@ const Search: NextPage = () => {
     queryType = 0;
   }
 
+  
+
   const queries = [
     {
       name: 'The Web',
@@ -111,7 +113,7 @@ const Search: NextPage = () => {
     <>
       <MainHead title="search" />
       <Wrapper>
-        <PageTitle>search</PageTitle>
+        <PageTitle paddingTop={0}>search</PageTitle>
         <TextInput
           icon={<TbSearch size={36} />}
           radius="xl"
@@ -166,7 +168,7 @@ const Search: NextPage = () => {
                     <iframe
                       src={queries[queryType].link}
                       frameBorder="0"
-                      width={1000}
+                      width={1200}
                       height={1000}
                       style={{borderRadius: '0.5rem'}}
                     />
