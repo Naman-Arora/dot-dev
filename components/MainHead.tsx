@@ -1,6 +1,5 @@
 import Head from 'next/head';
 type Props = {
-  // children: React.ReactNode;
   title: string;
 };
 const MainHead = (props: Props) => {
