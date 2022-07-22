@@ -7,13 +7,14 @@ import {
   TextInput,
   Paper,
   Group,
+  Center,
 } from '@mantine/core';
 import { getHotkeyHandler } from '@mantine/hooks';
 import { NextPage } from 'next';
 import { useState } from 'react';
 import PageTitle from '../../components/PageTitle';
 import Wrapper from '../../components/Wrapper';
-import { TbArrowRight, TbSearch } from 'react-icons/tb';
+import { TbArrowRight, TbSearch, TbExternalLink } from 'react-icons/tb';
 import MainHead from '../../components/MainHead';
 
 const Search: NextPage = () => {
@@ -48,27 +49,27 @@ const Search: NextPage = () => {
     {
       name: 'The Web',
       color: 'grape',
-      link: 'https://www.google.com/search?q=',
+      link: 'https://www.google.com/search?q=' + `${query}` + '&igu=1',
     },
     {
       name: 'Google',
       color: 'orange',
-      link: 'https://www.google.com/search?q=',
+      link: 'https://www.google.com/search?q=' + `${query}` + '&igu=1',
     },
     {
       name: 'Wikipedia',
       color: 'cyan',
-      link: 'https://www.wikipedia.org/wiki/',
+      link: 'https://www.wikipedia.org/wiki/' + `${query}`,
     },
     {
       name: 'Thesaurus',
       color: 'teal',
-      link: 'https://www.thesaurus.com/browse/',
+      link: 'https://www.thesaurus.com/browse/' + `${query}`,
     },
     {
       name: 'Dictionary',
       color: 'teal',
-      link: 'https://www.dictionary.com/browse/',
+      link: 'https://www.dictionary.com/browse/' + `${query}`,
     },
   ];
 
@@ -88,8 +89,23 @@ const Search: NextPage = () => {
   ];
 
   const openResult = () => {
-    window.open(queries[queryType].link + `${query}`, '_blank');
+    let queryLink = '';
+    if (
+      queries[queryType].name == 'The Web' ||
+      queries[queryType].name == 'Google'
+    ){
+      queryLink = 'https://www.google.com/search?q=' + `${query}`
+    } else {
+      queryLink = queries[queryType].link;
+    }
+      window.open(queryLink, '_blank');
   };
+
+  const linkIcon = (
+    <ActionIcon color="blue">
+      <TbExternalLink size={36} />
+    </ActionIcon>
+  );
 
   return (
     <>
@@ -118,7 +134,8 @@ const Search: NextPage = () => {
           onChange={(event) => setValue(event.currentTarget.value)}
           onKeyDown={getHotkeyHandler([['Enter', openResult]])}
         />
-        <Space h="xl" />{' '}
+        <Space h="xl" />
+        {''}
         {value.length > 0 && (
           <>
             <Box sx={{ padding: '1rem' }}>
@@ -131,18 +148,31 @@ const Search: NextPage = () => {
                   >
                     Search {queries[queryType].name} for:
                   </Badge>
-                  <Text<'a'>
-                    component="a"
-                    href={queries[queryType].link + `${query}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Badge<'button'>
+                    component="button"
+                    color="dark"
                     size="xl"
+                    radius="md"
+                    variant="filled"
+                    onClick={openResult}
+                    rightSection={linkIcon}
+                    sx={{ paddingRight: 0, cursor:"pointer" }}
                   >
                     {query}
-                  </Text>
+                  </Badge>
                 </Group>
+                <Center>
+                  <Box sx={{ padding: '1rem' }}>
+                    <iframe
+                      src={queries[queryType].link}
+                      frameBorder="0"
+                      width={1000}
+                      height={1000}
+                      style={{borderRadius: '0.5rem'}}
+                    />
+                  </Box>
+                </Center>
               </Paper>
-              <iframe src={queries[queryType].link + `${query}`} frameBorder="0" />
             </Box>
           </>
         )}
