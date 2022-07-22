@@ -6,10 +6,7 @@ import PageTitle from '../../components/PageTitle';
 import Wrapper from '../../components/Wrapper';
 
 const Apps = () => {
-  let largerThanSM = true;
-  if (useMediaQuery('(max-width: 900px)')) {
-    largerThanSM = false;
-  }
+  const largerThanSM = useMediaQuery('(min-width: 900px)', false);
 
   const completedAppNames = ['mathnasium text generator', 'weather app'];
   const completedAppLinks = ['/mathnasium/text-generator', '/weather'];
@@ -33,17 +30,20 @@ const Apps = () => {
           <Anchor color="pink">
             <Text
               align="left"
-              weight={700}
+              weight={600}
               sx={{
                 fontSize: '2rem',
                 paddingTop: '1rem',
+                fontFamily: 'Rubik',
               }}
             >
               {item}
             </Text>
           </Anchor>
         </Link>
-        <Text>{completedAppDescriptions[index]}</Text>
+        <Text size="lg" sx={{ fontFamily: 'Rubik' }}>
+          {completedAppDescriptions[index]}
+        </Text>
       </>
     );
   });
@@ -56,18 +56,21 @@ const Apps = () => {
           <Anchor color="pink">
             <Text
               align="left"
-              weight={700}
+              weight={600}
               color="pink"
               sx={{
                 fontSize: '2rem',
                 paddingTop: '1rem',
+                fontFamily: 'Rubik',
               }}
             >
               {item}
             </Text>
           </Anchor>
         </Link>{' '}
-        <Text>{wipAppDescriptions[index]}</Text>
+        <Text size="lg" sx={{ fontFamily: 'Rubik' }}>
+          {wipAppDescriptions[index]}
+        </Text>
       </>
     );
   });
@@ -76,35 +79,51 @@ const Apps = () => {
     <>
       <MainHead title="my apps" />
       <Wrapper>
-        <PageTitle>my apps</PageTitle>
+        <PageTitle paddingTop={0}>my apps</PageTitle>
         <Grid>
           <Grid.Col span={largerThanSM ? 6 : 12}>
             <Box sx={{ paddingLeft: '1rem', paddingRight: '1rem' }}>
-              <Text
-                align="center"
-                weight={700}
-                color="blue"
-                sx={{
+              <MediaQuery
+                largerThan="md"
+                styles={{
                   fontSize: '3rem',
                 }}
               >
-                Completed Apps
-              </Text>
+                <Text
+                  align="center"
+                  weight={600}
+                  color="blue"
+                  sx={{
+                    fontSize: '2.3rem',
+                    fontFamily: 'Rubik',
+                  }}
+                >
+                  Completed Apps
+                </Text>
+              </MediaQuery>
               {completedApps}
             </Box>
           </Grid.Col>
           <Grid.Col span={largerThanSM ? 6 : 12}>
             <Box sx={{ paddingLeft: '1rem', paddingRight: '1rem' }}>
-              <Text
-                align="center"
-                weight={700}
-                color="blue"
-                sx={{
+              <MediaQuery
+                largerThan="md"
+                styles={{
                   fontSize: '3rem',
                 }}
               >
-                Work-In-Progress Apps
-              </Text>
+                <Text
+                  align="center"
+                  weight={600}
+                  color="blue"
+                  sx={{
+                    fontSize: '2.3rem',
+                    fontFamily: 'Rubik',
+                  }}
+                >
+                  Work-In-Progress Apps
+                </Text>
+              </MediaQuery>
               {wipApps}
             </Box>
           </Grid.Col>
