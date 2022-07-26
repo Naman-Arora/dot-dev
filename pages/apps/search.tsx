@@ -23,7 +23,7 @@ const Search = () => {
             <Text
               inherit
               component="a"
-              href="search.namanarora.dev"
+              href="https://search.namanarora.dev"
               sx={(theme) => ({
                 color: theme.colors.cyan[4],
                 '&:hover': {
@@ -47,7 +47,7 @@ const Search = () => {
             <Text
               inherit
               component="a"
-              href="search.namanarora.dev"
+              href="https://search.namanarora.dev"
               sx={(theme) => ({
                 color: theme.colors.cyan[4],
                 '&:hover': {
