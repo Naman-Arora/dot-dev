@@ -52,31 +52,31 @@ const Search: NextPage = () => {
     {
       name: 'The Web',
       color: 'grape',
-      link: 'https://www.google.com/search?q=' + `${query}` + '&igu=1',
+      link: `https://www.google.com/search?q=${query}&igu=1`,
     },
     {
       name: 'Google',
       color: 'orange',
-      link: 'https://www.google.com/search?q=' + `${query}` + '&igu=1',
+      link: `https://www.google.com/search?q=${query}&igu=1`,
     },
     {
       name: 'Wikipedia',
       color: 'cyan',
-      link: 'https://www.wikipedia.org/wiki/' + `${query}`,
+      link: `https://www.wikipedia.org/wiki/${query}`,
     },
     {
       name: 'Thesaurus',
       color: 'teal',
-      link: 'https://www.thesaurus.com/browse/' + `${query}`,
+      link: `https://www.thesaurus.com/browse/${query}`,
     },
     {
       name: 'Dictionary',
       color: 'teal',
-      link: 'https://www.dictionary.com/browse/' + `${query}`,
+      link: `https://www.dictionary.com/browse/${query}`,
     },
   ];
 
-  const q = [
+  /*const q = [
     ['Twitter', 'blue', 'https://twitter.com/search?q='],
     [
       'Instagram',
@@ -88,16 +88,16 @@ const Search: NextPage = () => {
       'indigo',
       'https://www.linkedin.com/search/results/all/?keywords=',
     ],
-    // ['Stack Overflow', 'yellow', ],
-  ];
+    ['Stack Overflow', 'yellow', ],
+  ];*/
 
   const openResult = () => {
     let queryLink = '';
     if (
-      queries[queryType].name == 'The Web' ||
-      queries[queryType].name == 'Google'
+      queries[queryType].name === 'The Web' ||
+      queries[queryType].name === 'Google'
     ) {
-      queryLink = 'https://www.google.com/search?q=' + `${query}`;
+      queryLink = `https://www.google.com/search?q=${query}`;
     } else {
       queryLink = queries[queryType].link;
     }
