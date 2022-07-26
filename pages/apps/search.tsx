@@ -1,193 +1,357 @@
-import {
-  ActionIcon,
-  Badge,
-  Box,
-  Space,
-  Text,
-  TextInput,
-  Paper,
-  Group,
-  Center,
-  Grid,
-} from '@mantine/core';
-import { getHotkeyHandler, useMediaQuery } from '@mantine/hooks';
-import { NextPage } from 'next';
-import { useState } from 'react';
+import { Box, Center, Code, List, Text, Title } from '@mantine/core';
+import InfoTable from '../../components/apps/search/InfoTable';
+import MainHead from '../../components/MainHead';
 import PageTitle from '../../components/PageTitle';
 import Wrapper from '../../components/Wrapper';
-import { TbArrowRight, TbSearch, TbExternalLink } from 'react-icons/tb';
-import MainHead from '../../components/MainHead';
 
-const Search: NextPage = () => {
-  const largerThanSM = useMediaQuery('(min-width: 900px)', false);
-
-  const [value, setValue] = useState('');
-
-  let query = '';
-  let queryType = 0;
-
-  const gogl = new RegExp('^g |^google ', 'gmi');
-  const wiki = new RegExp('^w |^wikipedia ', 'gmi');
-  const thes = new RegExp('^t |^thesaurus ', 'gmi');
-  const dict = new RegExp('^d |^dictionary ', 'gmi');
-
-  if (gogl.test(value)) {
-    query = value.replace(gogl, '');
-    queryType = 1;
-  } else if (wiki.test(value)) {
-    query = value.replace(wiki, '');
-    queryType = 2;
-  } else if (thes.test(value)) {
-    query = value.replace(thes, '');
-    queryType = 3;
-  } else if (dict.test(value)) {
-    query = value.replace(dict, '');
-    queryType = 4;
-  } else {
-    query = value;
-    queryType = 0;
-  }
-
-  const queries = [
-    {
-      name: 'The Web',
-      color: 'grape',
-      link: `https://www.google.com/search?q=${query}&igu=1`,
-    },
-    {
-      name: 'Google',
-      color: 'orange',
-      link: `https://www.google.com/search?q=${query}&igu=1`,
-    },
-    {
-      name: 'Wikipedia',
-      color: 'cyan',
-      link: `https://www.wikipedia.org/wiki/${query}`,
-    },
-    {
-      name: 'Thesaurus',
-      color: 'teal',
-      link: `https://www.thesaurus.com/browse/${query}`,
-    },
-    {
-      name: 'Dictionary',
-      color: 'teal',
-      link: `https://www.dictionary.com/browse/${query}`,
-    },
-  ];
-
-  /*const q = [
-    ['Twitter', 'blue', 'https://twitter.com/search?q='],
-    [
-      'Instagram',
-      'pink',
-      'https://www.instagram.com/explore/search/keyword/?q=',
-    ],
-    [
-      'LinkedIn',
-      'indigo',
-      'https://www.linkedin.com/search/results/all/?keywords=',
-    ],
-    ['Stack Overflow', 'yellow', ],
-  ];*/
-
-  const openResult = () => {
-    let queryLink = '';
-    if (
-      queries[queryType].name === 'The Web' ||
-      queries[queryType].name === 'Google'
-    ) {
-      queryLink = `https://www.google.com/search?q=${query}`;
-    } else {
-      queryLink = queries[queryType].link;
-    }
-    window.open(queryLink, '_blank');
-  };
-
+const Search = () => {
   return (
     <>
       <MainHead title="search" />
       <Wrapper>
-        <PageTitle paddingTop={0}>search</PageTitle>
-        <Grid sx={{}}>
-          <Grid.Col span={largerThanSM ? 3 : 12}>
-            <Box
+        <Center>
+          <PageTitle>multi-search</PageTitle>
+        </Center>
+        <Center>
+          <Text
+            sx={{
+              fontFamily: 'Rubik',
+              fontSize: '1.5rem',
+            }}
+          >
+            Try it here: {''}
+            <Text
+              inherit
+              component="a"
+              href="search.namanarora.dev"
               sx={(theme) => ({
-                backgroundColor: theme.colors[queries[queryType].color],
-                textAlign: 'center',
-                padding: theme.spacing.md,
-                borderRadius: theme.radius.lg,
+                color: theme.colors.cyan[4],
+                '&:hover': {
+                  textDecoration: 'underline',
+                },
               })}
             >
+              search.namanarora.dev
+            </Text>
+            {''}
+          </Text>
+        </Center>
+        <Center>
+          <Text
+            sx={{
+              fontFamily: 'Rubik',
+              fontSize: '1.5rem',
+            }}
+          >
+            Download it here: {''}
+            <Text
+              inherit
+              component="a"
+              href="search.namanarora.dev"
+              sx={(theme) => ({
+                color: theme.colors.cyan[4],
+                '&:hover': {
+                  textDecoration: 'underline',
+                },
+              })}
+            >
+              search.namanarora.dev
+            </Text>
+            {''}
+          </Text>
+        </Center>
+        <Box
+          sx={{
+            paddingRight: '2rem',
+            paddingLeft: '2rem',
+          }}
+        >
+          <Text color="pink">
+            <Title
+              sx={{
+                fontFamily: 'Rubik',
+              }}
+            >
+              About Multi-Search
+            </Title>
+          </Text>
+          <Text
+            sx={{
+              fontFamily: 'Rubik',
+              fontSize: '1.25rem',
+            }}
+          >
+            Multi-Search is a new tab extension on the Google Chrome Webstore
+            that utilizes{' '}
+            <Text
+              inherit
+              component="a"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://reactjs.org/"
+              sx={(theme) => ({
+                color: theme.colors.cyan[4],
+                '&:hover': {
+                  textDecoration: 'underline',
+                },
+              })}
+            >
+              React
+            </Text>
+            ,{' '}
+            <Text
+              inherit
+              component="a"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://mantine.dev/"
+              sx={(theme) => ({
+                color: theme.colors.cyan[4],
+                '&:hover': {
+                  textDecoration: 'underline',
+                },
+              })}
+            >
+              Mantine
+            </Text>
+            , and{' '}
+            <Text
+              inherit
+              component="a"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.typescriptlang.org/"
+              sx={(theme) => ({
+                color: theme.colors.cyan[4],
+                '&:hover': {
+                  textDecoration: 'underline',
+                },
+              })}
+            >
+              Typescript
+            </Text>{' '}
+            to provide a series of shortcut commands that can be used to make
+            search queries across many different preset websites. The goal of
+            this Google Chrome Extension is to replace your new tab page with a
+            shortcut based search box. With supported websites, granted the
+            setting is turned on, a preview of the response can be seen.
+          </Text>
+          <Text color="pink">
+            <Title
+              sx={{
+                paddingTop: '2rem',
+                fontFamily: 'Rubik',
+              }}
+            >
+              Previews
+            </Title>
+          </Text>
+          <Text
+            sx={{
+              fontFamily: 'Rubik',
+              fontSize: '1.25rem',
+            }}
+          >
+            Previews are powered by the{' '}
+            <Text
+              inherit
+              component="span"
+              sx={{
+                fontFamily: 'monospace',
+              }}
+            >{`"<iframe>"`}</Text>{' '}
+            html element. However, since some websites send an{' '}
+            <Text
+              inherit
+              component="span"
+              sx={{
+                fontFamily: 'monospace',
+              }}
+            >
+              "X-Frame-Options: SAMEORIGIN"
+            </Text>{' '}
+            response, not all websites allow previews.
+          </Text>
+          <Text color="pink">
+            <Title
+              sx={{
+                paddingTop: '2rem',
+                fontFamily: 'Rubik',
+              }}
+            >
+              Shortcut Commands
+            </Title>
+          </Text>
+          <Center>
+            <InfoTable />
+          </Center>
+          <Text color="pink">
+            <Title
+              sx={{
+                paddingTop: '2rem',
+                fontFamily: 'Rubik',
+              }}
+            >
+              Acknowledgements
+            </Title>
+          </Text>
+          <List
+            sx={{
+              fontFamily: 'Rubik',
+              fontSize: '1.25rem',
+              paddingBottom: '1rem',
+            }}
+          >
+            <List.Item>
               <Text
-                color="white"
-                transform="uppercase"
                 weight={600}
-                sx={{
-                  fontFamily: 'Rubik',
-                }}
-                size="xl"
+                inherit
+                component="a"
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://reactjs.org/"
+                sx={(theme) => ({
+                  color: theme.colors.cyan[4],
+                  '&:hover': {
+                    textDecoration: 'underline',
+                  },
+                })}
               >
-                Search {queries[queryType].name} for:
+                <strong>ReactJS:</strong>
+              </Text>{' '}
+              for all the javascript libraries needed to run this app.
+            </List.Item>
+            <List.Item>
+              <Text
+                weight={600}
+                inherit
+                component="a"
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://mantine.dev/"
+                sx={(theme) => ({
+                  color: theme.colors.cyan[4],
+                  '&:hover': {
+                    textDecoration: 'underline',
+                  },
+                })}
+              >
+                <strong>Mantine:</strong>
+              </Text>{' '}
+              for the components used in this app.
+            </List.Item>
+            <List.Item>
+              <Text
+                weight={600}
+                inherit
+                component="a"
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://day.js.org/"
+                sx={(theme) => ({
+                  color: theme.colors.cyan[4],
+                  '&:hover': {
+                    textDecoration: 'underline',
+                  },
+                })}
+              >
+                <strong>DayJS:</strong>
+              </Text>{' '}
+              for the date and time libraries needed to run this app.
+            </List.Item>
+            <List.Item>
+              <Text
+                weight={600}
+                inherit
+                component="a"
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://vercel.com/"
+                sx={(theme) => ({
+                  color: theme.colors.cyan[4],
+                  '&:hover': {
+                    textDecoration: 'underline',
+                  },
+                })}
+              >
+                <strong>Vercel:</strong>
+              </Text>{' '}
+              for freely hosting this web app.
+            </List.Item>
+            <List.Item>
+              <Text
+                weight={600}
+                inherit
+                component="a"
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://github.com/"
+                sx={(theme) => ({
+                  color: theme.colors.cyan[4],
+                  '&:hover': {
+                    textDecoration: 'underline',
+                  },
+                })}
+              >
+                <strong>Github:</strong>
+              </Text>{' '}
+              for freely saving the repositories of this web app.
+            </List.Item>
+            <List.Item>
+              <Text
+                weight={600}
+                inherit
+                component="a"
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://github.com/react-icons/react-icons"
+                sx={(theme) => ({
+                  color: theme.colors.cyan[4],
+                  '&:hover': {
+                    textDecoration: 'underline',
+                  },
+                })}
+              >
+                <strong>React Icons:</strong>
+              </Text>{' '}
+              for packaging all the freely avaliable icons specifically icons from{' '}
+              <Text
+                weight={600}
+                inherit
+                component="a"
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://tabler-icons.io/"
+                sx={(theme) => ({
+                  color: theme.colors.cyan[4],
+                  '&:hover': {
+                    textDecoration: 'underline',
+                  },
+                })}
+              >
+                <strong>Tabler Icons</strong>
+              </Text>{' '}
+              and icons from{' '}
+              <Text
+                weight={600}
+                inherit
+                component="a"
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://fontawesome.com//"
+                sx={(theme) => ({
+                  color: theme.colors.cyan[4],
+                  '&:hover': {
+                    textDecoration: 'underline',
+                  },
+                })}
+              >
+                <strong>Font Awesome</strong>
               </Text>
-            </Box>
-          </Grid.Col>
-
-          <Grid.Col span={largerThanSM ? 9 : 12}>
-            <Box
-              sx={(theme) => ({
-                textAlign: 'center',
-                borderRadius: theme.radius.md,
-                alignItems: 'center',
-                justifyContent: 'center',
-              })}
-            >
-              <TextInput
-                icon={<TbSearch size={36} />}
-                radius="xl"
-                size="xl"
-                rightSection={
-                  <ActionIcon
-                    size={36}
-                    radius="xl"
-                    variant="filled"
-                    color="blue"
-                    sx={{ marginRight: '1rem', padding: '0.1rem' }}
-                    onClick={openResult}
-                  >
-                    <TbExternalLink size={32} />
-                  </ActionIcon>
-                }
-                placeholder="Search"
-                rightSectionWidth={42}
-                value={value}
-                onChange={(event) => setValue(event.currentTarget.value)}
-                onKeyDown={getHotkeyHandler([['Enter', openResult]])}
-              />
-            </Box>
-          </Grid.Col>
-        </Grid>
-        <Space h="xl" />
-        {''}
-        {value.length > 0 && (
-          <>
-            <Box sx={{ padding: '1rem' }}>
-              <Paper shadow="sm" radius="md" p="xl" withBorder>
-                <Center>
-                  <Box sx={{ padding: '1rem' }}>
-                    <iframe
-                      src={queries[queryType].link}
-                      frameBorder="0"
-                      width={1200}
-                      height={1000}
-                      style={{ borderRadius: '0.5rem' }}
-                    />
-                  </Box>
-                </Center>
-              </Paper>
-            </Box>
-          </>
-        )}
+              {'.'}
+            </List.Item>
+          </List>
+        </Box>
       </Wrapper>
     </>
   );
