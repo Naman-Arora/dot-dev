@@ -55,7 +55,7 @@ const Search = () => {
                 },
               })}
             >
-              search.namanarora.dev
+              chrome webstore
             </Text>
             {''}
           </Text>
