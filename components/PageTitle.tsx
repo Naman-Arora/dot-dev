@@ -19,7 +19,7 @@ const PageTitle = (props: Props) => {
         largerThan="sm"
         styles={{
           fontSize: '4rem',
-          paddingTop: `${pT}` + 'rem',
+          paddingTop: `${pT}rem`,
         }}
       >
         <Text
