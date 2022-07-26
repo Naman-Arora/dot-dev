@@ -86,7 +86,7 @@ const Wrapper = (props: Props) => {
                 <Group>
                   <div>
                     <Anchor
-                      href="mailto:namanarora166@gmail.com"
+                      href="mailto:namanarora@mail.com"
                       target="_blank"
                       rel="noopener noreferrer"
                       style={{ margin: '.1rem' }}
