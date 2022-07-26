@@ -136,7 +136,7 @@ const Search = () => {
             shortcut based search box. With supported websites, granted the
             setting is turned on, a preview of the response can be seen.
           </Text>
-          <Text color="pink">
+          <Text color="pink" id='previews'>
             <Title
               sx={{
                 paddingTop: '2rem',
@@ -172,7 +172,7 @@ const Search = () => {
             </Text>{' '}
             response, not all websites allow previews.
           </Text>
-          <Text color="pink">
+          <Text color="pink" id='commands'>
             <Title
               sx={{
                 paddingTop: '2rem',
@@ -185,7 +185,7 @@ const Search = () => {
           <Center>
             <InfoTable />
           </Center>
-          <Text color="pink">
+          <Text color="pink" id='acknowledgements'>
             <Title
               sx={{
                 paddingTop: '2rem',
