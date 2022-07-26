@@ -12,7 +12,7 @@ import {
 import { DatePicker } from '@mantine/dates';
 import { NextPage } from 'next';
 import { useState } from 'react';
-import Graph from '../../components/Graph';
+import Graph from '../../components/apps/weight-tracker/Graph';
 import MainHead from '../../components/MainHead';
 import PageTitle from '../../components/PageTitle';
 import Wrapper from '../../components/Wrapper';
