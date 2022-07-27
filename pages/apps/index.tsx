@@ -8,11 +8,12 @@ import Wrapper from '../../components/Wrapper';
 const Apps = () => {
   const largerThanSM = useMediaQuery('(min-width: 900px)', false);
 
-  const completedAppNames = ['mathnasium text generator', 'weather app'];
-  const completedAppLinks = ['/mathnasium/text-generator', '/weather'];
+  const completedAppNames = ['mathnasium text generator', 'weather app', 'search'];
+  const completedAppLinks = ['/mathnasium/text-generator', '/weather', '/search'];
   const completedAppDescriptions = [
     'A text message generator for Mathnasium, which takes input in the form of text in order to return a text message that should be sent to parents.',
     "A weather app which utilizes a user's zip code to provide current weather information.",
+    'Replace new tab screen with a search box powered by single letter keys. Currently in progress of becoming a chrome extension.'
   ];
 
   const wipAppNames = ['todo list', 'weight tracker'];
@@ -23,7 +24,7 @@ const Apps = () => {
   ];
 
   const completedApps = completedAppNames.map((item, index) => {
-    const url = '/apps' + completedAppLinks[index];
+    const url = `/apps${completedAppLinks[index]}`;
     return (
       <>
         <Link href={url}>
