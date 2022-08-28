@@ -145,24 +145,14 @@ const Home: NextPage = () => {
                       current projects:
                     </Text>
                   </MediaQuery>
-                  <Link href="/apps/weather">
+                  <Link href="/apps/">
                     <Button
                       variant="outline"
                       radius="md"
                       size="md"
                       style={{ fontSize: '1.2rem', fontFamily: 'Rubik' }}
                     >
-                      weather app
-                    </Button>
-                  </Link>
-                  <Link href="/apps/mathnasium/text-generator">
-                    <Button
-                      variant="outline"
-                      radius="md"
-                      size="md"
-                      style={{ fontSize: '1.2rem', fontFamily: 'Rubik' }}
-                    >
-                      mathnasium text generator
+                      my apps
                     </Button>
                   </Link>
                 </Stack>
