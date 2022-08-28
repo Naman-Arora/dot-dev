@@ -1,4 +1,4 @@
-import { Box, Center, Code, List, Text, Title } from '@mantine/core';
+import { Box, Center, List, Text, Title } from '@mantine/core';
 import InfoTable from '../../components/apps/search/InfoTable';
 import MainHead from '../../components/MainHead';
 import PageTitle from '../../components/PageTitle';
