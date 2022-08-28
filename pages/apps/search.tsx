@@ -23,6 +23,8 @@ const Search = () => {
             <Text
               inherit
               component="a"
+              target="_blank"
+              rel="noopener noreferrer"
               href="https://search.namanarora.dev"
               sx={(theme) => ({
                 color: theme.colors.cyan[4],
